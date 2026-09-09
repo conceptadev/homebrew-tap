@@ -6,18 +6,35 @@ Homebrew formulae for Concepta developer tools.
 
 ```bash
 brew tap conceptadev/tap
-brew install okfp
+brew install okf
+```
+
+Or in one step, without tapping first:
+
+```bash
+brew install conceptadev/tap/okf
 ```
 
 ## Formulae
 
 | Formula | Description |
 | --- | --- |
-| [okfp](Formula/okfp.rb) | OKF profile validator — checks a knowledge bundle against its declared profile |
+| [okf](Formula/okf.rb) | Format-first toolkit for reading, validating, writing, indexing, and graphing Open Knowledge Format bundles |
 
 ## Releases
 
-Formula `url` and `sha256` fields for `okfp` are updated automatically when
-[okf-profile](https://github.com/conceptadev/okf-profile) publishes a release
-tag. Until the first tagged release is published, `brew install okfp` will not
-succeed.
+The `okf` formula installs the prebuilt executable attached to each
+[okf](https://github.com/conceptadev/okf) release, so installing it does not
+build anything and does not need the Dart SDK.
+
+Its `url` and `sha256` fields are regenerated automatically when okf publishes
+a release tag: the release workflow reads the checksums back from the published
+assets and commits the rendered formula here. Do not edit `Formula/okf.rb` by
+hand — the next release overwrites it.
+
+Prebuilt executables cover Apple Silicon macOS and x86_64 Linux. Other
+platforms can install the tool from pub.dev instead:
+
+```bash
+dart pub global activate okf
+```
